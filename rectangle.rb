@@ -1,3 +1,6 @@
+module MATH
+end
+
 class Angle < Object
 
   def initialize(deg)
@@ -20,6 +23,11 @@ class Angle < Object
   def obtuse?
     @deg > 90
   end
+
+  def to_radians
+    @deg * Math::PI / 180
+  end
+
 
 end
 
@@ -70,6 +78,11 @@ describe Angle do
   it "is obtuse if it's greater than 90" do
     angle = Angle.new(91)
     expect(angle.obtuse?).to be_true
+  end
+
+  it "converts correctly to radians" do
+    angle = Angle.new(90)
+    expect(angle.to_radians).to eq 1.5707963267948966
   end
 
 end
